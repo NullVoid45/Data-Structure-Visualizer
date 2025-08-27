@@ -3,13 +3,15 @@
 
 int s[MAX], top = -1, n = MAX;
 
-__declspec(dllexport) void push(int val) {
+__declspec(dllexport) int push(int val) {
     if (top == n - 1) {
         printf("Stack overflow\n");
+        return -1;
     } else {
         top++;
         s[top] = val;
         printf("Value %d inserted\n", val);
+        return 0;
     }
 }
 
