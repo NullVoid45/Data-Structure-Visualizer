@@ -13,7 +13,7 @@ except OSError:
     exit()
 
 sta.push.argtypes = [ctypes.c_int]
-sta.push.restype = None
+sta.push.restype = ctypes.c_int 
 
 sta.pop.argtypes = []
 sta.pop.restype = ctypes.c_int
@@ -33,7 +33,7 @@ entry.bind("<Return>", lambda event: Push())
 stack_label = tk.Label(scr, text="Stack Contents:", bg="#343f3e", fg="white",font = ("Arial", 12,"bold"))
 stack_label.place(x=18, y=100)
 
-stack_display = tk.Text(scr, height=16, width=35, state=tk.DISABLED, bg="#505a5b", fg="#000000",font = ("Arial", 12,"bold"))
+stack_display = tk.Text(scr, height=10, width=20, state=tk.DISABLED, bg="#505a5b", fg="#000000",font = ("Arial", 20,"bold"))
 stack_display.place(x=20, y=125)
 
 def update_display():
@@ -60,11 +60,14 @@ def Push():
     value_str = entry.get()
     if value_str.isdigit():
         value = int(value_str)
-        sta.push(value)
-        update_display()
-        entry.delete(0, tk.END)
-    else:
-        messagebox.showwarning("Invalid Input", "Please enter a valid integer!")
+        result = sta.push(value)
+        if result == -1:
+            messagebox.showinfo("Action", "Stack Overflow")
+        elif result == 0:
+            update_display()
+            entry.delete(0, tk.END)
+        else:
+            messagebox.showwarning("Invalid Input", "Please enter a valid integer!")
 
 def Pop():
     result = sta.pop()
