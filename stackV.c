@@ -5,24 +5,20 @@ int s[MAX], top = -1, n = MAX;
 
 __declspec(dllexport) int push(int val) {
     if (top == n - 1) {
-        printf("Stack overflow\n");
         return -1;
     } else {
         top++;
         s[top] = val;
-        printf("Value %d inserted\n", val);
         return 0;
     }
 }
 
 __declspec(dllexport) int pop() {
     if (top == -1) {
-        printf("Underflow\n");
         return -1;
     } else {
         int val = s[top];
         top--;
-        printf("Value %d deleted\n", val);
         return val;
     }
 }
