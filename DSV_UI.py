@@ -7,7 +7,7 @@ from PIL import Image, ImageTk
 dll_path = os.path.join(os.path.dirname(__file__), "Stack.dll")
 
 try:
-    sta = ctypes.CDLL(r"C:\Dfolder\Coding\DataStructures\Stack.dll")
+    sta = ctypes.CDLL(r"C:\Dfolder\Coding\DataStructures\DSV.dll")
 except OSError:
     messagebox.showerror("Error", "Stack.dll not found. Please ensure it's in the same directory.")
     exit()
