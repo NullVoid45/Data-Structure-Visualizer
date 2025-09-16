@@ -115,28 +115,73 @@ def open_stack_visualizer(parent):
 
     update_display()
 
-def open_queue_visualizer(root):
-    print("\n")
+def open_queue_visualizer(parent):
+    messagebox.showinfo("⚠️Caution", "Work in progress.")
+    pass
 
-def open_linkedlist_visualizer(root):
-    print("\n")
+def open_linkedlist_visualizer(parent):
+    
+    messagebox.showinfo("⚠️Caution", "Work in progress.")
+    
+    sta.ins_beg.argtypes = [ctypes.c_int]
+    sta.ins_beg.restype = ctypes.c_int
+    
+    LLscr = tk.Toplevel(parent)
+    LLscr.title("Visual Representation of Linked List")
+    LLscr.geometry("800x600")
+    LLscr.configure(bg="#343f3e")
+    
+    entryLL = tk.Entry(LLscr, width=20, font = ("Arial",15))
+    entryLL.place(x = 0, y = 60)
+    entryLL.bind("<Return>", lambda event: INSERT())
+    
+    def INSERT():
+        value_str = entryLL.get()
+        pass
+    #Make a function called INSERT(), then put conditional statements that says if ins_beg: return 1 elif ins_end: return 2 so on and so forth
+    #replace sta.ins_beg() with INSERT()
+    
+    def SLL():
+        pass
+    
+    def DLL():
+        pass
+    
+    def CLL():
+        pass
+    
+    def Insert_paradigm_switch():
+        pass
+    
+    SLL_button = tk.Button(LLscr, text ="SLL", command = lambda: SLL,bg = "#505a5b", width = 6,height = 2,fg="#ffffff",font=("Arial", 10, "bold"))
+    SLL_button.place(x = 4,y = 5)
+    
+    DLL_button = tk.Button(LLscr, text ="DLL", command = lambda: DLL,bg = "#505a5b", width = 6,height = 2,fg="#ffffff",font=("Arial", 10, "bold"))
+    DLL_button.place(x = 84,y = 5)
+    
+    CLL_button = tk.Button(LLscr, text ="CLL", command = lambda: CLL,bg = "#505a5b", width = 6,height = 2,fg="#ffffff",font=("Arial", 10, "bold"))
+    CLL_button.place(x = 164,y = 5)
+    
+    Insert_paradigm_var = tk.BooleanVar(LLscr)
+    Insert_paradigm_switch = tk.Checkbutton(LLscr, text = "Insert at the Beginning",font = ("Arial",12,"bold"),bg = "#505a5b",variable= Insert_paradigm_var, command=lambda:Insert_paradigm_var.get())
+    Insert_paradigm_switch.place(x = 250,y = 12)
 
 def main_screen():
     root = tk.Tk()
     root.title("Data Structures Visualizer")
-    root.geometry("500x600")
+    root.geometry("600x600")
     root.configure(bg="#191919")
     
     label = tk.Label(root, text="Visualizers", bg="#36363f", fg="#fcfcf3", font=("Arial", 38, "bold"))
     label.pack(pady=40)
 
-    Stack_button = tk.Button(root,text="Stack Visualizer", command= lambda: open_stack_visualizer(root),bg="#505a5b", width = 19, height = 3,fg="#ffffff",font=("Arial", 13, "bold"))
+    Stack_button = tk.Button(root,text="Stack", command= lambda: open_stack_visualizer(root),bg="#505a5b", width = 23, height = 3,fg="#ffffff",font=("Arial", 15, "bold"))
     Stack_button.pack(pady=20)
     
-    Queue_button = tk.Button(root,text ="Queue Visualizer", command = lambda: open_queue_visualizer(root),bg="#505a5b", width = 19, height = 3,fg="#ffffff",font=("Arial", 13, "bold"))
+    Queue_button = tk.Button(root,text ="Queue", command = lambda: open_queue_visualizer(root),bg="#505a5b", width = 23, height = 3,fg="#ffffff",font=("Arial", 15, "bold"))
     Queue_button.pack(pady=20)
     
-    Linkedlist_button = tk.Button(root,text="Linked List Visualizer", command = lambda: open_linkedlist_visualizer(root),bg="#505a5b", width = 19, height = 3,fg="#ffffff",font=("Arial", 13, "bold"))
+    Linkedlist_button = tk.Button(root,text="Linked List", command = lambda: open_linkedlist_visualizer(root),bg="#505a5b", width = 23, height = 3,fg="#ffffff",font=("Arial", 15, "bold"))
     Linkedlist_button.pack(pady=20)    
     root.mainloop()
 
