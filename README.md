@@ -1,1 +1,1 @@
-This Repository contains Data Structure Visualizer coded using C and Python.😁
+This Repository contains Data Structure Visualizer coded using C(Backend) and Python(frontend).😁
