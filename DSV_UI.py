@@ -140,26 +140,34 @@ def open_linkedlist_visualizer(parent):
         pass
     #Make a function called INSERT(), then put conditional statements that says if ins_beg: return 1 elif ins_end: return 2 so on and so forth
     #replace sta.ins_beg() with INSERT()
-    
+
+    def button_color(x):
+        L = [SLL_button,DLL_button,CLL_button]
+        if x in L:
+            x.config(bg = "#06cf0d",fg = "#000000")
+            L.remove(x)
+            L[0].config(bg = "#505a5b",fg = "#FFFFFF")
+            L[1].config(bg = "#505a5b",fg = "#FFFFFF")
+
     def SLL():
-        pass
+        button_color(SLL_button)
     
     def DLL():
-        pass
+        button_color(DLL_button)
     
     def CLL():
-        pass
-    
+        button_color(CLL_button)
+
     def Insert_paradigm_switch():
         pass
     
-    SLL_button = tk.Button(LLscr, text ="SLL", command = lambda: SLL,bg = "#505a5b", width = 6,height = 2,fg="#ffffff",font=("Arial", 10, "bold"))
+    SLL_button = tk.Button(LLscr, text ="SLL", command = SLL,bg = "#505a5b", width = 6,height = 2,fg="#ffffff",font=("Arial", 10, "bold"))
     SLL_button.place(x = 4,y = 5)
     
-    DLL_button = tk.Button(LLscr, text ="DLL", command = lambda: DLL,bg = "#505a5b", width = 6,height = 2,fg="#ffffff",font=("Arial", 10, "bold"))
+    DLL_button = tk.Button(LLscr, text ="DLL", command = DLL,bg = "#505a5b", width = 6,height = 2,fg="#ffffff",font=("Arial", 10, "bold"))
     DLL_button.place(x = 84,y = 5)
     
-    CLL_button = tk.Button(LLscr, text ="CLL", command = lambda: CLL,bg = "#505a5b", width = 6,height = 2,fg="#ffffff",font=("Arial", 10, "bold"))
+    CLL_button = tk.Button(LLscr, text ="CLL", command = CLL,bg = "#505a5b", width = 6,height = 2,fg="#ffffff",font=("Arial", 10, "bold"))
     CLL_button.place(x = 164,y = 5)
     
     Insert_paradigm_var = tk.BooleanVar(LLscr)
@@ -187,3 +195,6 @@ def main_screen():
 
 if __name__ == "__main__":
     main_screen()
+
+#Make it so when you open Stack or any other visualizer the home screen closes itself, provide an option in the visualizers to be able to
+#go back to the home screen
