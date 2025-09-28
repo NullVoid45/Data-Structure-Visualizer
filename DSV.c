@@ -7,9 +7,12 @@ int s[MAX], top = -1, n = MAX;
 
 __declspec(dllexport) int push(int val)
 {
-    if (top == n - 1) {
+    if (top == n - 1)
+	{
         return -1;
-    } else {
+    } 
+	else
+	{
         top++;
         s[top] = val;
         return 0;
@@ -36,16 +39,14 @@ __declspec(dllexport) int* get_stack(int *size) {
 
 // Linked List implementation
 struct node
-{int val;
-struct node*next ;
+{
+	int val;
+	struct node*next ;
 };
 struct node*head=NULL,*p,*q,*nw;
 
-__declspec(dllexport) int ins_beg()
+__declspec(dllexport) int SLL_ins_beg(int x)
 {
-	int x;
-	printf("Enter x: ");
-	scanf("%d",&x);
 	nw = (struct node *) malloc (sizeof(struct node));
 	nw -> val = x;
 	nw -> next = NULL;
@@ -59,14 +60,11 @@ __declspec(dllexport) int ins_beg()
 		nw -> next = head;
 		head = nw;
 	}
-	return 1;
+	return 1; //tell python, if ins_beg == 1 , print("Value inserted at the begining")
 }
 
-__declspec(dllexport) int ins_end()
+__declspec(dllexport) int SLL_ins_end(int x)
 {
-	int x;
-	printf("Enter x: ");
-	scanf("%d",&x);
 	nw = (struct node *) malloc (sizeof(struct node));
 	nw -> val = x;
 	nw -> next = NULL;
@@ -84,16 +82,12 @@ __declspec(dllexport) int ins_end()
 		}
 		p -> next = nw;
 	}
-	return 1;
+	return 1; //tell python, if ins_end == 1, print("Value inserted at the end")
 }
 
-__declspec(dllexport) int ins_pos()
+__declspec(dllexport) int SLL_ins_pos(int x, int pos)
 {
-	int x,pos,c = 0;
-	printf("Enter x: ");
-	scanf("%d",&x);
-	printf("Enter position: ");
-	scanf("%d",&pos);
+	int c = 0;
 	nw = (struct node *) malloc (sizeof(struct node));
 	nw -> val = x;
 	nw -> next = NULL;
@@ -114,10 +108,10 @@ __declspec(dllexport) int ins_pos()
 		q -> next = nw;
 		nw -> next = p;
 	}
-    return 1;
+    return 1; //tell python, if SLL_ins_pos == 1, print("Value inserted at the end")
 }
 
-__declspec(dllexport) int del_beg()
+__declspec(dllexport) int SLL_del_beg()
 {
 	if(head == NULL)
 	{
@@ -130,9 +124,10 @@ __declspec(dllexport) int del_beg()
 		free(p);
 		printf("\nValue Deleted\n");
 	}
+	return 1;
 }
 
-__declspec(dllexport) int del_end()
+__declspec(dllexport) int SLL_del_end()
 {
 	if(head == NULL)
 	{
@@ -150,13 +145,12 @@ __declspec(dllexport) int del_end()
 		free(p);
 		printf("\nValue Deleted\n");
 	}
+	return 1;
 }
 
-__declspec(dllexport) int del_pos()
+__declspec(dllexport) int SLL_del_pos(int pos)
 {
-	int pos,c = 0;
-	printf("Enter position: ");
-	scanf("%d",&pos);	
+	int c = 0;
 	if(head = NULL)
 	{
 		printf("\nLinked List is Empty");
@@ -172,6 +166,7 @@ __declspec(dllexport) int del_pos()
 		}
 	}
 	printf("\nValue Deleted\n");
+	return 1;
 }
 
 __declspec(dllexport) void display()
